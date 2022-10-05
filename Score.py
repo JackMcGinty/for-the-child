@@ -3,8 +3,8 @@ Bradley
 """
 import json
 
-"""Holds the current score and high score"""
 class Score:
+    """Holds the current score and high score"""
     def __init__(self):
         """Initializes the score variables"""
         self.score = 0
