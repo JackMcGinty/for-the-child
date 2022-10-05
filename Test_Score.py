@@ -9,6 +9,8 @@ class Test_Score:
         print("\nSCORE INIT SETUP: ")
         self.score = Score()
         print("SCORE INIT SETUP PASSED")
+        self.test()
+        
     
     def test(self):
         """Main Test Runner Function"""
@@ -47,6 +49,3 @@ class Test_Score:
             self.score.high_score = json.load(read)["high_score"]
         assert self.score.high_score == 100
         print("test_update_high_score passed")
-
-score = Test_Score()
-score.test()
