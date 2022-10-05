@@ -1,5 +1,4 @@
-from Score import Test_Score
-
+from Test_Score import Test_Score
 
 """Class that will test all the functionality of the program"""
 class Test:
@@ -10,4 +9,9 @@ class Test:
         
     def run(self):
         '''Runs all the test classes for each class in the program'''
-        self.score.test(self.score)
+        self.score.test()
+        print("All Tests passed")
+
+test = Test()
+
+test.run()
