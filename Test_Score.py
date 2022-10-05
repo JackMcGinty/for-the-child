@@ -40,8 +40,3 @@ class Test_Score:
         with open(file, 'r') as read:
             self.score.high_score = json.load(read)["high_score"]
         assert self.score.high_score == 100
-
-
-score = Test_Score()
-
-Test_Score.test(score)
