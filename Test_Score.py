@@ -3,8 +3,8 @@ import json
 from Score import Score
 
 
+"""Class that will test all the functionality of the Score class"""
 class Test_Score:
-    """Class that will test all the functionality of the Score class"""
     def __init__(self):
         self.passed = True
         self.score = Score()

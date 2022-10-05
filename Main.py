@@ -1,4 +1,5 @@
 import pygame
+from Test import Test
 
 pygame.init()
 
@@ -8,6 +9,7 @@ HEIGHT = 700
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
 def main():
+    Test()
     run = True
 
     while run:
