@@ -1,4 +1,5 @@
 import pygame
+from Board import Board
 from Test import Test
 
 pygame.init()
@@ -10,15 +11,12 @@ screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
 def main():
     Test()
-    run = True
 
-    while run:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-                pygame.quit()
+    The_Board = Board()
+    The_Board.Board()
 
-        pygame.display.update()
+
+
 
 if __name__ == "__main__":
     main()

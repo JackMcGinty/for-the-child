@@ -14,7 +14,17 @@ class Board:
 
     }
 
-    screen  = pygame.display.set_mode([600,600])
+    def Board():
+
+        screen = pygame.display.set_mode([600,600])
+        run = True 
+        while run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    run = False
+        
+            pygame.display.update()
+
 
 
         
