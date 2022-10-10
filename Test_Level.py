@@ -14,7 +14,6 @@ class Test_Level:
         self.test_default()
         self.test_get_level()
         self.test_next_level()
-        print("LEVEL TESTS:\t\t\tPASSED")
     
     def test_default(self):
         """Tests default values of Level class"""
