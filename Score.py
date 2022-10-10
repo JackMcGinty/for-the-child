@@ -1,6 +1,3 @@
-"""
-Bradley
-"""
 import json
 
 class Score:
