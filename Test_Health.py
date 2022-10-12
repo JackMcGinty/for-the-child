@@ -4,9 +4,9 @@ class Test_Health:
     """Class that will test all the functionality of the Health class"""
     def __init__(self):
         print("------------------------------------------------------------")
-        print("Health:")
+        print("HEALTH:")
         self.health = Health()
-        print("Health INIT SETUP\t\tPASSED")
+        print("HEALTH INIT SETUP\t\tPASSED")
         self.test()
         
     def test(self):
