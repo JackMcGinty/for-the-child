@@ -2,6 +2,7 @@
 Brennon
 """
 
+from tkinter import Y
 import pygame
 #pygame.init()
 
@@ -39,11 +40,18 @@ class Board:
             Xsize = 60
             Ysize = 80
             # Drawing Rectangle
-            for i in range(12):
+            for i in range(34):
                 
                 pygame.draw.rect(screen, color, pygame.Rect(Xfirst, Yfirst, Xsize, Ysize))
+                
+                Xfirst += 80
+                # if i == 11 or i == 21 or i == 31:
+                #     Yfirst += 100
+                #     Xfirst = 30
 
-                Xfirst += 80      
+                if Xfirst % 830 == 0:
+                    Yfirst += 100
+                    Xfirst = 30
             pygame.display.update()
 
 
