@@ -2,7 +2,6 @@
 Brennon
 """
 
-from tkinter import Y
 import pygame
 from Cards import Card, generate_deck
 from Level import *
