@@ -9,6 +9,7 @@ def main():
 
     The_Board = Board()
     The_Board.DisplayBoard()
+    pygame.quit()
 
 
 
