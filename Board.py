@@ -49,22 +49,25 @@ class Board:
         while run:
             clock.tick(60)
 
-            for event in pygame.event.get():
-
-                if event.type == pygame.QUIT:
-                    run = False
-
-                if timer_on == True:
-                    if timer < 40:
-                        timer = self.start_timer(timer)
-                    else:
-                        timer = 0
-                        cards_mismatched.clear()
-                        first_card = ""
-                        clicked_cntr = 0
-                        timer_on = False
-
+            if timer_on == True:
+                if timer < 40:
+                    timer = self.start_timer(timer)
                 else:
+                    timer = 0
+                    cards_mismatched.clear()
+                    first_card = ""
+                    clicked_cntr = 0
+                    timer_on = False
+            
+            else:
+                for event in pygame.event.get():
+
+                    if event.type == pygame.QUIT:
+                        run = False
+
+                    # The timer allows the user to see what mismatched color they selected for a breif moment
+                    # This is inside the event forloop so that you can exit the game while it's looping but it doesn't look great
+
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         for card in list_of_cards:
                                 if card.rect.collidepoint(event.pos):
@@ -91,6 +94,7 @@ class Board:
                     pygame.draw.rect(screen, card.color, card.rect)
                 else:
                     screen.blit(card.surf, card.rect)
+
             pygame.display.flip()
                     # Initialing Color
             # color = (255,0,0)
