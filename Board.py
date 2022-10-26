@@ -49,12 +49,14 @@ class Board:
                             if card.rect.collidepoint(event.pos):
                                 clicked_cntr += 1
                                 if clicked_cntr >= 2:
-                                    if first_card.is_match(card):
+                                    if first_card == card:
+                                        pass
+                                    elif first_card.is_match(card):
                                         print('True')
                                     clicked_cntr = 0
                                 else:
                                     first_card = card
-                                    
+         
             # Draw cards
             for card in list_of_cards:
                 screen.blit(card.surf, card.rect)
