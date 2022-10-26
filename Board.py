@@ -31,7 +31,10 @@ class Board:
         screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
 
-        list_of_cards = generate_deck(34, (WIDTH, HEIGHT))
+        list_of_cards = generate_deck(4, (WIDTH, HEIGHT))
+
+        first_card = ""
+        clicked_cntr = 0
 
         #screen = pygame.display.set_mode()
         run = True 
@@ -42,10 +45,16 @@ class Board:
                     run = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    for i in list_of_cards:
-                            if i.rect.collidepoint(event.pos):
-                                print(f"clicked card {i}\nnumclicks = {click_counter}")
-                                click_counter += 1
+                    for card in list_of_cards:
+                            if card.rect.collidepoint(event.pos):
+                                clicked_cntr += 1
+                                if clicked_cntr >= 2:
+                                    if first_card.is_match(card):
+                                        print('True')
+                                    clicked_cntr = 0
+                                else:
+                                    first_card = card
+                                    
             # Draw cards
             for card in list_of_cards:
                 screen.blit(card.surf, card.rect)
