@@ -10,8 +10,5 @@ def main():
     The_Board.DisplayBoard()
     pygame.quit()
 
-
-
-
 if __name__ == "__main__":
     main()

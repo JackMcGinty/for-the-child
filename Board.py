@@ -31,10 +31,12 @@ class Board:
         clock = pygame.time.Clock()
 
 
+        card_amount = 6
+
         screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
 
-        list_of_cards = generate_deck(16, (WIDTH, HEIGHT))
+        list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
 
         cards_revealed = []
         cards_mismatched = []
@@ -42,6 +44,7 @@ class Board:
         clicked_cntr = 0
         timer = 0
         timer_on = False
+        win = False
 
         #screen = pygame.display.set_mode()
         run = True 
@@ -50,7 +53,7 @@ class Board:
             clock.tick(60)
 
             if timer_on == True:
-                if timer < 40:
+                if timer < 60:
                     timer = self.start_timer(timer)
                 else:
                     timer = 0
@@ -58,6 +61,10 @@ class Board:
                     first_card = ""
                     clicked_cntr = 0
                     timer_on = False
+                    if win == True:
+                        win = True
+                        print("you win")
+                        return
             
             else:
                 for event in pygame.event.get():
@@ -65,28 +72,29 @@ class Board:
                     if event.type == pygame.QUIT:
                         run = False
 
-                    # The timer allows the user to see what mismatched color they selected for a breif moment
-                    # This is inside the event forloop so that you can exit the game while it's looping but it doesn't look great
-
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         for card in list_of_cards:
                                 if card.rect.collidepoint(event.pos):
-                                    clicked_cntr += 1
-                                    if clicked_cntr >= 2:
-                                        if first_card == card:
-                                            pass
-                                        elif first_card.is_match(card):
-                                            cards_revealed.append(first_card)
-                                            cards_revealed.append(card)
-                                            clicked_cntr = 0
+                                    if card not in cards_revealed:
+                                        clicked_cntr += 1
+                                        if clicked_cntr >= 2:
+                                            if first_card == card:
+                                                pass
+                                            elif first_card.is_match(card):
+                                                cards_revealed.append(first_card)
+                                                cards_revealed.append(card)
+                                                clicked_cntr = 0
+                                                if len(cards_revealed) == card_amount:
+                                                    timer_on = True
+
+                                            else:
+                                                cards_mismatched.append(first_card)
+                                                cards_mismatched.append(card)
+
+                                                timer_on = True
+
                                         else:
-                                            cards_mismatched.append(first_card)
-                                            cards_mismatched.append(card)
-
-                                            timer_on = True
-
-                                    else:
-                                        first_card = card
+                                            first_card = card
          
             # Draw cards
             for card in list_of_cards:
@@ -96,25 +104,7 @@ class Board:
                     screen.blit(card.surf, card.rect)
 
             pygame.display.flip()
-                    # Initialing Color
-            # color = (255,0,0)
 
-            # Xfirst = 30
-            # Yfirst = 30
-            # Xsize = 60
-            # Ysize = 80
-            # Drawing Rectangle
-
-            #     pygame.draw.rect(screen, color, pygame.Rect(Xfirst, Yfirst, Xsize, Ysize))
-                
-            #     Xfirst += 80
-            #     # if i == 11 or i == 21 or i == 31:
-            #     #     Yfirst += 100
-            #     #     Xfirst = 30
-
-                # if Xfirst % 830 == 0:
-                #     Yfirst += 100
-                #     Xfirst = 30
             pygame.display.update()
 
 
