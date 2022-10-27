@@ -86,6 +86,7 @@ class Board:
                                                 clicked_cntr = 0
                                                 if len(cards_revealed) == card_amount:
                                                     timer_on = True
+                                                    win = True
 
                                             else:
                                                 cards_mismatched.append(first_card)
