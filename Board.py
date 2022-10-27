@@ -31,7 +31,7 @@ class Board:
         clock = pygame.time.Clock()
 
 
-        card_amount = 6
+        card_amount = 32
 
         screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
