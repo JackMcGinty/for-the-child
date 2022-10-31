@@ -71,7 +71,7 @@ class Board:
                     for event in pygame.event.get():
 
                         if event.type == pygame.QUIT:
-                            run = False
+                            return
 
                         if event.type == pygame.MOUSEBUTTONDOWN:
                             for card in list_of_cards:
