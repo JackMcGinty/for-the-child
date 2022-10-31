@@ -27,86 +27,88 @@ class Board:
 
     """ Bryan has messed around a bit in here """
     def DisplayBoard(self):
-        pygame.init()
-        clock = pygame.time.Clock()
+        while self.level.get_level() < 4:
+                
+            pygame.init()
+            clock = pygame.time.Clock()
 
 
-        card_amount = 32
+            card_amount = self.level.get_next_level()
 
-        screen = pygame.display.set_mode([WIDTH, HEIGHT])
+            screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
 
-        list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
+            list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
 
-        cards_revealed = []
-        cards_mismatched = []
-        first_card = ""
-        clicked_cntr = 0
-        timer = 0
-        timer_on = False
-        win = False
+            cards_revealed = []
+            cards_mismatched = []
+            first_card = ""
+            clicked_cntr = 0
+            timer = 0
+            timer_on = False
+            win = False
 
-        #screen = pygame.display.set_mode()
-        run = True 
-        click_counter = 0 # for debug
-        while run:
-            clock.tick(60)
+            #screen = pygame.display.set_mode()
+            run = True 
+            click_counter = 0 # for debug
+            while run:
+                clock.tick(60)
 
-            if timer_on == True:
-                if timer < 60:
-                    timer = self.start_timer(timer)
+                if timer_on == True:
+                    if timer < 60:
+                        timer = self.start_timer(timer)
+                    else:
+                        timer = 0
+                        cards_mismatched.clear()
+                        first_card = ""
+                        clicked_cntr = 0
+                        timer_on = False
+                        if win == True:
+                            print("you win")
+                            return
+                
                 else:
-                    timer = 0
-                    cards_mismatched.clear()
-                    first_card = ""
-                    clicked_cntr = 0
-                    timer_on = False
-                    if win == True:
-                        win = True
-                        print("you win")
-                        return
-            
-            else:
-                for event in pygame.event.get():
+                    for event in pygame.event.get():
 
-                    if event.type == pygame.QUIT:
-                        run = False
+                        if event.type == pygame.QUIT:
+                            run = False
 
-                    if event.type == pygame.MOUSEBUTTONDOWN:
-                        for card in list_of_cards:
-                                if card.rect.collidepoint(event.pos):
-                                    if card not in cards_revealed:
-                                        clicked_cntr += 1
-                                        if clicked_cntr >= 2:
-                                            if first_card == card:
-                                                pass
-                                            elif first_card.is_match(card):
-                                                cards_revealed.append(first_card)
-                                                cards_revealed.append(card)
-                                                clicked_cntr = 0
-                                                if len(cards_revealed) == card_amount:
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            for card in list_of_cards:
+                                    if card.rect.collidepoint(event.pos):
+                                        if card not in cards_revealed:
+                                            clicked_cntr += 1
+                                            if clicked_cntr >= 2:
+                                                if first_card == card:
+                                                    pass
+                                                elif first_card.is_match(card):
+                                                    cards_revealed.append(first_card)
+                                                    cards_revealed.append(card)
+                                                    clicked_cntr = 0
+                                                    if len(cards_revealed) == card_amount:
+                                                        timer_on = True
+                                                        if self.level.get_level() > 3:
+                                                            win = True
+
+                                                else:
+                                                    cards_mismatched.append(first_card)
+                                                    cards_mismatched.append(card)
+
                                                     timer_on = True
-                                                    win = True
 
                                             else:
-                                                cards_mismatched.append(first_card)
-                                                cards_mismatched.append(card)
+                                                first_card = card
+            
+                # Draw cards
+                for card in list_of_cards:
+                    if card == first_card or card in cards_revealed or card in cards_mismatched:
+                        pygame.draw.rect(screen, card.color, card.rect)
+                    else:
+                        screen.blit(card.surf, card.rect)
 
-                                                timer_on = True
+                pygame.display.flip()
 
-                                        else:
-                                            first_card = card
-         
-            # Draw cards
-            for card in list_of_cards:
-                if card == first_card or card in cards_revealed or card in cards_mismatched:
-                    pygame.draw.rect(screen, card.color, card.rect)
-                else:
-                    screen.blit(card.surf, card.rect)
-
-            pygame.display.flip()
-
-            pygame.display.update()
+                pygame.display.update()
 
 
 

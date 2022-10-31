@@ -1,7 +1,3 @@
-
-
-
-
 class Level:
     """Holds the attributes for the Level class including: current level..."""
 
@@ -9,17 +5,20 @@ class Level:
         1:4,
         2:9,
         3:16,
-
     }
 
     current_level = 0
 
     def __init__(self):
-        self.level = 0
+        self.current_level = 0
 
     def get_level(self):
         """Returns the current level"""
-        return self.level
+        return self.current_level
+
+    def add_level(self):
+        """adds a level"""
+        self.current_level += 1
 
     def get_next_level(self) -> int:
         """
@@ -27,6 +26,6 @@ class Level:
         Progress to next level
         Outputs: 
         """
-        self.current_level ++ 1
+        self.add_level()
         num_cards = self.levels[self.current_level]
         return num_cards
