@@ -7,7 +7,7 @@ class Level:
         3:16,
     }
 
-    current_level = 0
+    current_level = 1
 
     def __init__(self):
         self.current_level = 0
