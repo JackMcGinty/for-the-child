@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 if not pygame.get_init():
     pygame.init()
 
@@ -49,6 +50,8 @@ def generate_deck(size: int, screensize: tuple[2]) -> list:
         new_card_2 = Card(new_card_color)
         new_deck.append(new_card_1)
         new_deck.append(new_card_2)
+    if size % 2 != 0:
+        new_deck.append(Card((0, 0, 0)))
     suffled_deck = shuffle_deck(new_deck)
     placed_deck = position_deck(suffled_deck, screensize)
     return placed_deck
@@ -64,25 +67,36 @@ def shuffle_deck(deck: list) -> list:
         return_deck.append(chosen_card)
     return return_deck
         
-# Position the cards on screen
+# Position (and resize) the cards on screen.
 
 # [TODO] Cards on second and onward rows are offset more than the first.
 #   Find out why.
 #   Also screensize is not used but is hardcoded @ (1000, 700)
 def position_deck(deck: list[Card], screensize: tuple[2]) -> list[Card]:
-    i_x = 0
-    i_y = 0
-    x_offset = 20
-    y_offset = 20
+
+    # let's find the ideal card size
+    ideal_cols = 0
+    ideal_rows = 0
+    ideal_cols = round(len(deck) ** (1/2))
+    ideal_rows = ideal_cols
     x_padding = 10
     y_padding = 10
+    card_width = (screensize[0] - (x_padding*(ideal_rows+1))) / ideal_rows
+    card_height = (screensize[1] - (x_padding*(ideal_cols+1))) / ideal_cols
+    i_x = 0
+    i_y = 0
+    column = 0
     for card in deck:
-        card.rect.left = i_x + x_offset
-        card.rect.top = i_y + y_offset
+        card.rect.width = card_width
+        card.rect.height = card_height
+        card.rect.left = i_x + x_padding
+        card.rect.top = i_y + y_padding
         i_x += (card.rect.width + x_padding)
-        if i_x >= 830:
-            i_x = x_offset
+        column += 1
+        if column >= ideal_cols:
+            i_x = 0
             i_y += (card.rect.height + y_padding)
+            column = 0
         card.update_surf()
     return deck
 
@@ -94,9 +108,8 @@ def generate_color():
     level would still be completable anyway, 
     since color is the means by which a match 
     is determined."""
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
+    # to make sure we don't get black
+    r = random.randint(50, 255)
+    g = random.randint(50, 255)
+    b = random.randint(50, 255)
     return (r, g, b)
-
-
