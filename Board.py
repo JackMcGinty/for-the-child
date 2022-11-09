@@ -85,20 +85,23 @@ class Board:
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
-                                                    if len(cards_revealed) == card_amount:
-                                                        timer_on = True
-                                                        if self.level.get_level() > 3:
-                                                            win = True
-
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
+                                                    if first_card.color == (0,0,0):
+                                                        cards_revealed.append(first_card)
+                                                    if card.color == (0,0,0):
+                                                        cards_revealed.append(card)
 
                                                     timer_on = True
 
                                             else:
                                                 first_card = card
-            
+                                    print(len(cards_revealed), card_amount)
+                                    if len(cards_revealed) == card_amount:
+                                        timer_on = True
+                                        if self.level.get_level() > 3:
+                                            win = True
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
@@ -109,8 +112,10 @@ class Board:
                 pygame.display.flip()
 
                 pygame.display.update()
+
                 if len(cards_revealed) == card_amount:
                     time.sleep(1)
+                    cards_revealed.clear()
                     card_amount = self.level.get_next_level()
                     screen.fill((0,0,0))
                     list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
