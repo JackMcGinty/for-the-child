@@ -2,6 +2,7 @@
 Brennon
 """
 
+import time
 import pygame
 from Cards import Card, generate_deck
 from Level import *
@@ -86,9 +87,6 @@ class Board:
                                                     clicked_cntr = 0
                                                     if len(cards_revealed) == card_amount:
                                                         timer_on = True
-                                                        card_amount = self.level.get_next_level()
-                                                        screen.fill((0,0,0))
-                                                        list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
                                                         if self.level.get_level() > 3:
                                                             win = True
 
@@ -111,6 +109,11 @@ class Board:
                 pygame.display.flip()
 
                 pygame.display.update()
+                if len(cards_revealed) == card_amount:
+                    time.sleep(1)
+                    card_amount = self.level.get_next_level()
+                    screen.fill((0,0,0))
+                    list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
 
 
 
