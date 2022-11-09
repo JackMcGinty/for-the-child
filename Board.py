@@ -53,7 +53,6 @@ class Board:
             click_counter = 0 # for debug
             while run:
                 clock.tick(60)
-
                 if timer_on == True:
                     if timer < 60:
                         timer = self.start_timer(timer)
@@ -87,6 +86,9 @@ class Board:
                                                     clicked_cntr = 0
                                                     if len(cards_revealed) == card_amount:
                                                         timer_on = True
+                                                        card_amount = self.level.get_next_level()
+                                                        screen.fill((0,0,0))
+                                                        list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
                                                         if self.level.get_level() > 3:
                                                             win = True
 
