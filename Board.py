@@ -91,23 +91,28 @@ class Board:
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
+                                                elif card.color == (0,0,0):
+                                                    cards_revealed.append(card)
+                                                    clicked_cntr = 1
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
-                                                    if first_card.color == (0,0,0):
-                                                        cards_revealed.append(first_card)
-                                                    if card.color == (0,0,0):
-                                                        cards_revealed.append(card)
+                                                    # if first_card.color == (0,0,0):
+                                                    #     cards_revealed.append(first_card)
+                                                    #     clicked_cntr = 0
 
                                                     timer_on = True
 
                                             else:
+                                                if card.color == (0,0,0):
+                                                    cards_revealed.append(card)
+                                                    clicked_cntr = 0
                                                 first_card = card
-                                    print(len(cards_revealed), card_amount)
                                     if len(cards_revealed) == card_amount:
                                         timer_on = True
                                         if self.level.get_level() > 3:
                                             win = True
+                            print(clicked_cntr)
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
