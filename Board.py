@@ -2,6 +2,7 @@
 Brennon
 """
 
+import time
 import pygame
 from Cards import Card, generate_deck
 from Level import *
@@ -28,7 +29,7 @@ class Board:
     """ Bryan has messed around a bit in here """
     def DisplayBoard(self):
         while self.level.get_level() < 4:
-                
+            
             pygame.init()
             clock = pygame.time.Clock()
 
@@ -49,11 +50,16 @@ class Board:
             win = False
 
             #screen = pygame.display.set_mode()
-            run = True 
-            click_counter = 0 # for debug
+            run = True
+            start = True
             while run:
+                if start:
+                    for card in list_of_cards:
+                        pygame.draw.rect(screen, card.color, card.rect, 0, 15)
+                        pygame.display.update()
+                    time.sleep(1)
                 clock.tick(60)
-
+                start = False
                 if timer_on == True:
                     if timer < 60:
                         timer = self.start_timer(timer)
@@ -85,30 +91,41 @@ class Board:
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
-                                                    if len(cards_revealed) == card_amount:
-                                                        timer_on = True
-                                                        if self.level.get_level() > 3:
-                                                            win = True
-
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
+                                                    if first_card.color == (0,0,0):
+                                                        cards_revealed.append(first_card)
+                                                    if card.color == (0,0,0):
+                                                        cards_revealed.append(card)
 
                                                     timer_on = True
 
                                             else:
                                                 first_card = card
-            
+                                    print(len(cards_revealed), card_amount)
+                                    if len(cards_revealed) == card_amount:
+                                        timer_on = True
+                                        if self.level.get_level() > 3:
+                                            win = True
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
-                        pygame.draw.rect(screen, card.color, card.rect)
+                        pygame.draw.rect(screen, card.color, card.rect, 0, 15)
                     else:
-                        screen.blit(card.surf, card.rect)
+                        pygame.draw.rect(screen, (255,255,255), card.rect, 0, 15)
 
                 pygame.display.flip()
 
                 pygame.display.update()
+
+                if len(cards_revealed) == card_amount and self.level.get_level() < 4:
+                    start = True
+                    time.sleep(1)
+                    cards_revealed.clear()
+                    card_amount = self.level.get_next_level()
+                    screen.fill((0,0,0))
+                    list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
 
 
 
