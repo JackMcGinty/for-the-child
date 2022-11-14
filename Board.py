@@ -29,7 +29,7 @@ class Board:
     """ Bryan has messed around a bit in here """
     def DisplayBoard(self):
         while self.level.get_level() < 4:
-                
+            
             pygame.init()
             clock = pygame.time.Clock()
 
@@ -50,10 +50,16 @@ class Board:
             win = False
 
             #screen = pygame.display.set_mode()
-            run = True 
-            click_counter = 0 # for debug
+            run = True
+            start = True
             while run:
+                if start:
+                    for card in list_of_cards:
+                        pygame.draw.rect(screen, card.color, card.rect)
+                        pygame.display.update()
+                    time.sleep(1)
                 clock.tick(60)
+                start = False
                 if timer_on == True:
                     if timer < 60:
                         timer = self.start_timer(timer)
@@ -113,7 +119,8 @@ class Board:
 
                 pygame.display.update()
 
-                if len(cards_revealed) == card_amount:
+                if len(cards_revealed) == card_amount and self.level.get_level() < 4:
+                    start = True
                     time.sleep(1)
                     cards_revealed.clear()
                     card_amount = self.level.get_next_level()
