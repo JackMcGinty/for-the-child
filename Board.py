@@ -97,9 +97,6 @@ class Board:
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
-                                                    # if first_card.color == (0,0,0):
-                                                    #     cards_revealed.append(first_card)
-                                                    #     clicked_cntr = 0
 
                                                     timer_on = True
 
@@ -112,7 +109,6 @@ class Board:
                                         timer_on = True
                                         if self.level.get_level() > 3:
                                             win = True
-                            print(clicked_cntr)
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
@@ -131,8 +127,3 @@ class Board:
                     card_amount = self.level.get_next_level()
                     screen.fill((0,0,0))
                     list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
-
-
-
-            
-
