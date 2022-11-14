@@ -108,8 +108,11 @@ def generate_color():
     level would still be completable anyway, 
     since color is the means by which a match 
     is determined."""
-    # to make sure we don't get black
-    r = random.randint(50, 255)
-    g = random.randint(50, 255)
-    b = random.randint(50, 255)
+    # bounds are so that we don't get a color 
+    #   too close to white or black
+    lower_bound = 50
+    upper_bound = 220
+    r = random.randint(lower_bound, upper_bound)
+    g = random.randint(lower_bound, upper_bound)
+    b = random.randint(lower_bound, upper_bound)
     return (r, g, b)
