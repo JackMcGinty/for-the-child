@@ -55,7 +55,7 @@ class Board:
             while run:
                 if start:
                     for card in list_of_cards:
-                        pygame.draw.rect(screen, card.color, card.rect)
+                        pygame.draw.rect(screen, card.color, card.rect, 0, 15)
                         pygame.display.update()
                     time.sleep(1)
                 clock.tick(60)
@@ -91,19 +91,20 @@ class Board:
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
+                                                elif card.color == (0,0,0):
+                                                    cards_revealed.append(card)
+                                                    clicked_cntr = 1
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
-                                                    if first_card.color == (0,0,0):
-                                                        cards_revealed.append(first_card)
-                                                    if card.color == (0,0,0):
-                                                        cards_revealed.append(card)
 
                                                     timer_on = True
 
                                             else:
+                                                if card.color == (0,0,0):
+                                                    cards_revealed.append(card)
+                                                    clicked_cntr = 0
                                                 first_card = card
-                                    print(len(cards_revealed), card_amount)
                                     if len(cards_revealed) == card_amount:
                                         timer_on = True
                                         if self.level.get_level() > 3:
@@ -111,9 +112,9 @@ class Board:
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
-                        pygame.draw.rect(screen, card.color, card.rect)
+                        pygame.draw.rect(screen, card.color, card.rect, 0, 15)
                     else:
-                        screen.blit(card.surf, card.rect)
+                        pygame.draw.rect(screen, (255,255,255), card.rect, 0, 15)
 
                 pygame.display.flip()
 
@@ -126,8 +127,3 @@ class Board:
                     card_amount = self.level.get_next_level()
                     screen.fill((0,0,0))
                     list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
-
-
-
-            
-

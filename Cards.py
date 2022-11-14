@@ -75,6 +75,7 @@ def shuffle_deck(deck: list) -> list:
 def position_deck(deck: list[Card], screensize: tuple[2]) -> list[Card]:
 
     # let's find the ideal card size
+    working_screen_height = screensize[1] - 75 # make space for the health bar
     ideal_cols = 0
     ideal_rows = 0
     ideal_cols = round(len(deck) ** (1/2))
@@ -82,7 +83,7 @@ def position_deck(deck: list[Card], screensize: tuple[2]) -> list[Card]:
     x_padding = 10
     y_padding = 10
     card_width = (screensize[0] - (x_padding*(ideal_rows+1))) / ideal_rows
-    card_height = (screensize[1] - (x_padding*(ideal_cols+1))) / ideal_cols
+    card_height = (working_screen_height - (x_padding*(ideal_cols+1))) / ideal_cols
     i_x = 0
     i_y = 0
     column = 0
@@ -108,8 +109,11 @@ def generate_color():
     level would still be completable anyway, 
     since color is the means by which a match 
     is determined."""
-    # to make sure we don't get black
-    r = random.randint(50, 255)
-    g = random.randint(50, 255)
-    b = random.randint(50, 255)
+    # bounds are so that we don't get a color 
+    #   too close to white or black
+    lower_bound = 50
+    upper_bound = 220
+    r = random.randint(lower_bound, upper_bound)
+    g = random.randint(lower_bound, upper_bound)
+    b = random.randint(lower_bound, upper_bound)
     return (r, g, b)
