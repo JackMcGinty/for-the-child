@@ -75,6 +75,7 @@ def shuffle_deck(deck: list) -> list:
 def position_deck(deck: list[Card], screensize: tuple[2]) -> list[Card]:
 
     # let's find the ideal card size
+    screensize[1] -= 75 # make space for the health bar
     ideal_cols = 0
     ideal_rows = 0
     ideal_cols = round(len(deck) ** (1/2))
