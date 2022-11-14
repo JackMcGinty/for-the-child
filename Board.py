@@ -55,7 +55,7 @@ class Board:
             while run:
                 if start:
                     for card in list_of_cards:
-                        pygame.draw.rect(screen, card.color, card.rect)
+                        pygame.draw.rect(screen, card.color, card.rect, 0, 15)
                         pygame.display.update()
                     time.sleep(1)
                 clock.tick(60)
@@ -111,9 +111,9 @@ class Board:
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
-                        pygame.draw.rect(screen, card.color, card.rect)
+                        pygame.draw.rect(screen, card.color, card.rect, 0, 15)
                     else:
-                        screen.blit(card.surf, card.rect)
+                        pygame.draw.rect(screen, (255,255,255), card.rect, 0, 15)
 
                 pygame.display.flip()
 
