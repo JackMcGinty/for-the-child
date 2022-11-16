@@ -1,6 +1,6 @@
 class Health:
     def __init__(self):
-        self.health = 1
+        self.health = 5
 
     def get_health(self):
         '''gets the current health'''

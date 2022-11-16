@@ -6,6 +6,7 @@ import time
 import pygame
 from Cards import Card, generate_deck
 from Level import *
+from Health import Health
 if not pygame.get_init():
     pygame.init()
 
@@ -17,21 +18,20 @@ class Board:
     health_txt = font.render("Health: ", True, (255,0,0))
 
     def __init__(self):
-        self.levels = {
-            "level_1":4,
-            "level_2":8,
-            "level_3":16,
-
-        }
         self.level = Level()
+        self.health = Health()
 
     def start_timer(self, timer):
         timer += 1
         return timer
+    
+    # def print_text(self, text, location):
+    # """print text on the screen"""
+    
 
     """ Bryan has messed around a bit in here """
     def DisplayBoard(self):
-        while self.level.get_level() < 4:
+        while not self.health.no_health():
             
             pygame.init()
             clock = pygame.time.Clock()
@@ -50,8 +50,6 @@ class Board:
             clicked_cntr = 0
             timer = 0
             timer_on = False
-            win = False
-            health = 5
 
             #screen = pygame.display.set_mode()
             run = True
@@ -65,7 +63,7 @@ class Board:
                 clock.tick(60)
                 start = False
 
-                health_num = self.font.render(str(health), True, (255,0,0))
+                health_num = self.font.render(str(self.health.get_health()), True, (255,0,0))
 
                 if timer_on == True:
                     if timer < 60:
@@ -76,9 +74,6 @@ class Board:
                         first_card = ""
                         clicked_cntr = 0
                         timer_on = False
-                        if win == True:
-                            print("you win")
-                            return
                 
                 
                 else:
@@ -103,13 +98,13 @@ class Board:
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 1
 
-                                                    health += 1
+                                                    self.health.add_health(1)
 
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
 
-                                                    health -= 1
+                                                    self.health.lose_a_life()
 
                                                     timer_on = True
 
@@ -118,16 +113,27 @@ class Board:
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
 
-                                                    health += 1
+                                                    self.health.add_health(1)
                                                     
                                                 first_card = card
-                                    if health <= 0:
-                                        print("You loose")
+                                    if self.health.no_health():
+                                        print("You lose")
+                                        screen.fill((0,0,0))
+                                        game_over = self.font.render("You Lose!", True, (255,0,0))
+                                        screen.blit(game_over, (WIDTH/2 - 75, HEIGHT/2 - 50, 200, 200))
+                                        pygame.display.update()
+                                        time.sleep(3)
+                                        
+                                        # while True:
+                                        #     choices = {"Y", "N"}
+                                        #     choice = ""
+                                        #     while choice not in choices:
+                                        #         self.display_text("Would you like to play again? ")
+                                        
                                         return
+                                    
                                     if len(cards_revealed) == card_amount:
                                         timer_on = True
-                                        if self.level.get_level() > 3:
-                                            win = True
 
                 screen.fill((0,0,0))
                 # Draw cards
@@ -144,10 +150,12 @@ class Board:
 
                 pygame.display.update()
 
-                if len(cards_revealed) == card_amount and self.level.get_level() < 4:
+                if len(cards_revealed) == card_amount and not self.health.no_health():
                     start = True
+                    self.health.add_health(self.level.get_level() * 2)
                     time.sleep(1)
                     cards_revealed.clear()
                     card_amount = self.level.get_next_level()
                     screen.fill((0,0,0))
                     list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
+                    
