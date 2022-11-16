@@ -6,12 +6,12 @@ class Health:
         '''gets the current health'''
         return self.health
 
-    def add_health(self):
+    def add_health(self, amount):
         '''adds one health point to the player'''
-        self.health += 1
+        self.health += amount
         return self.health
 
-    def subtract_health(self):
+    def lose_a_life(self):
         '''removes a health point from the player'''
         self.health -= 1
         return self.health
