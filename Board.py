@@ -13,6 +13,9 @@ WIDTH = 1000
 HEIGHT = 700
 
 class Board:
+    font = pygame.font.SysFont('Arial', 40)
+    health_txt = font.render("Health: ", True, (255,0,0))
+
     def __init__(self):
         self.levels = {
             "level_1":4,
@@ -48,6 +51,7 @@ class Board:
             timer = 0
             timer_on = False
             win = False
+            health = 5
 
             #screen = pygame.display.set_mode()
             run = True
@@ -60,6 +64,9 @@ class Board:
                     time.sleep(1)
                 clock.tick(60)
                 start = False
+
+                health_num = self.font.render(str(health), True, (255,0,0))
+
                 if timer_on == True:
                     if timer < 60:
                         timer = self.start_timer(timer)
@@ -72,6 +79,7 @@ class Board:
                         if win == True:
                             print("you win")
                             return
+                
                 
                 else:
                     for event in pygame.event.get():
@@ -94,9 +102,14 @@ class Board:
                                                 elif card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 1
+
+                                                    health += 1
+
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
+
+                                                    health -= 1
 
                                                     timer_on = True
 
@@ -104,17 +117,28 @@ class Board:
                                                 if card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
+
+                                                    health += 1
+                                                    
                                                 first_card = card
+                                    if health <= 0:
+                                        print("You loose")
+                                        return
                                     if len(cards_revealed) == card_amount:
                                         timer_on = True
                                         if self.level.get_level() > 3:
                                             win = True
+
+                screen.fill((0,0,0))
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
                         pygame.draw.rect(screen, card.color, card.rect, 0, 15)
                     else:
                         pygame.draw.rect(screen, (255,255,255), card.rect, 0, 15)
+
+                screen.blit(self.health_txt, (50, 655, 200, 200))
+                screen.blit(health_num, (200, 655, 200, 200))
 
                 pygame.display.flip()
 
