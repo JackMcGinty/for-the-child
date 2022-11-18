@@ -7,6 +7,7 @@ import pygame
 from Cards import Card, generate_deck
 from Level import *
 from Health import Health
+from Sounds import sound
 if not pygame.get_init():
     pygame.init()
 
@@ -35,6 +36,7 @@ class Board:
             
             pygame.init()
             clock = pygame.time.Clock()
+            fx = sound()
 
 
             card_amount = self.level.get_next_level()
@@ -91,6 +93,8 @@ class Board:
                                                 if first_card == card:
                                                     pass
                                                 elif first_card.is_match(card):
+                                                    fx.play_bell_when_second_card_clicked()
+                                                    fx.play_cheering()
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
@@ -103,7 +107,7 @@ class Board:
                                                 else:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
-
+                                                    fx.play_crying()
                                                     self.health.lose_a_life()
 
                                                     timer_on = True
@@ -114,7 +118,7 @@ class Board:
                                                     clicked_cntr = 0
 
                                                     self.health.add_health(1)
-                                                    
+                                                fx.play_bell_when_first_card_clicked()                                                    
                                                 first_card = card
                                     if self.health.no_health():
                                         print("You lose")
