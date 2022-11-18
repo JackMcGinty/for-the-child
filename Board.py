@@ -16,7 +16,8 @@ HEIGHT = 700
 
 class Board:
     font = pygame.font.SysFont('Arial', 40)
-    health_txt = font.render("Health: ", True, (255,0,0))
+    health_txt = font.render("Health: ", True, (255,255,255))
+    round_txt = font.render("Round:", True, (255,255,255))
 
     def __init__(self):
         self.level = Level()
@@ -37,7 +38,7 @@ class Board:
             pygame.init()
             clock = pygame.time.Clock()
             fx = sound()
-
+            fx.shuffle()
 
             card_amount = self.level.get_next_level()
 
@@ -65,7 +66,8 @@ class Board:
                 clock.tick(60)
                 start = False
 
-                health_num = self.font.render(str(self.health.get_health()), True, (255,0,0))
+                health_num = self.font.render(str(self.health.get_health()), True, (255,255,255))
+                round_num = self.font.render(str(self.level.get_level()), True, (255,255,255))
 
                 if timer_on == True:
                     if timer < 60:
@@ -94,20 +96,19 @@ class Board:
                                                     pass
                                                 elif first_card.is_match(card):
                                                     fx.play_bell_when_second_card_clicked()
-                                                    fx.play_cheering()
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
+                                                    self.health.add_health(1)
                                                     clicked_cntr = 0
                                                 elif card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 1
-
-                                                    self.health.add_health(1)
+                                                    fx.play_wildcard()
 
                                                 else:
+                                                    fx.play_flip_back()
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
-                                                    fx.play_crying()
                                                     self.health.lose_a_life()
 
                                                     timer_on = True
@@ -116,11 +117,12 @@ class Board:
                                                 if card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
-
-                                                    self.health.add_health(1)
-                                                fx.play_bell_when_first_card_clicked()                                                    
+                                                    fx.play_wildcard()
+                                                else:
+                                                    fx.play_bell_when_first_card_clicked()                                                    
                                                 first_card = card
                                     if self.health.no_health():
+                                        fx.play_fail()
                                         print("You lose")
                                         screen.fill((0,0,0))
                                         game_over = self.font.render("You Lose!", True, (255,0,0))
@@ -148,7 +150,9 @@ class Board:
                         pygame.draw.rect(screen, (255,255,255), card.rect, 0, 15)
 
                 screen.blit(self.health_txt, (50, 655, 200, 200))
+                screen.blit(self.round_txt, (600, 655, 200, 200))
                 screen.blit(health_num, (200, 655, 200, 200))
+                screen.blit(round_num, (800, 655, 200, 200))
 
                 pygame.display.flip()
 
@@ -156,7 +160,8 @@ class Board:
 
                 if len(cards_revealed) == card_amount and not self.health.no_health():
                     start = True
-                    self.health.add_health(self.level.get_level() * 2)
+                    self.health.add_health(self.level.get_level())
+                    fx.shuffle()
                     time.sleep(1)
                     cards_revealed.clear()
                     card_amount = self.level.get_next_level()
