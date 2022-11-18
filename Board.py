@@ -36,6 +36,7 @@ class Board:
         while not self.health.no_health():
             
             pygame.init()
+            pygame.display.set_caption("Memorize You Colors!")
             clock = pygame.time.Clock()
             fx = sound()
             fx.shuffle()
@@ -62,7 +63,8 @@ class Board:
                     for card in list_of_cards:
                         pygame.draw.rect(screen, card.color, card.rect, 0, 15)
                         pygame.display.update()
-                    time.sleep(1)
+                    time.sleep(self.level.get_level())
+                    fx.next_level()
                 clock.tick(60)
                 start = False
 

@@ -14,7 +14,7 @@ class sound:
     BELL_ONE = mixer.Sound("assets/bell1.ogg")
     BELL_TWO = mixer.Sound("assets/bell2.ogg")
     SHUFFLE = mixer.Sound("assets/shuffle.ogg")
-    NEXTLEVEL = mixer.Sound("assets/nextlevel.ogg")
+    NEXTLEVEL = mixer.Sound("assets/untitled.ogg")
     FAIL = mixer.Sound("assets/fail.ogg")
     # CHEER = mixer.Sound("assets/Cheer.wav")
     # CRYING = mixer.Sound("assets/crying")
@@ -32,6 +32,9 @@ class sound:
     
     def play_wildcard(self):
         self.BELL_ONE.play()
+
+    def next_level(self):
+        self.NEXTLEVEL.play()
 
     def play_fail(self):
         self.FAIL.play()
