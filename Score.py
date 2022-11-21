@@ -9,7 +9,7 @@ class Score:
     
     def add_score(self, number):
         """Adds points to total score"""
-        self.score += number
+        self.score += 2 ** number
 
     def get_score(self):
         """Returns the current score"""
