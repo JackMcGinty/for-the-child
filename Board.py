@@ -48,6 +48,7 @@ class Board:
             clock = pygame.time.Clock()
             fx = sound()
             fx.shuffle()
+            fx.play_back_ground_music()
 
             card_amount = self.level.get_next_level()
 
