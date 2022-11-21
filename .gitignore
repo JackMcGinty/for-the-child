@@ -164,3 +164,6 @@ cython_debug/
 
 # ignore bryan's local files
 /.vscode
+
+# ignore database key
+/memorize-your-colors-highscore-firebase-adminsdk-qzc53-9608cf9bbe.json
