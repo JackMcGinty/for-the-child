@@ -6,18 +6,18 @@ from pygame import mixer
 
 
 class sound:
+    def __init__(self) -> None:
 
-    mixer.init()
-    BACKGROUND_MUSIC = mixer.music.load("assets/background.ogg")
-    FLIP = mixer.Sound("assets/flip.ogg")
-    FLIPBACK = mixer.Sound("assets/flipback.ogg")
-    BELL_ONE = mixer.Sound("assets/bell1.ogg")
-    BELL_TWO = mixer.Sound("assets/bell2.ogg")
-    SHUFFLE = mixer.Sound("assets/shuffle.ogg")
-    NEXTLEVEL = mixer.Sound("assets/untitled.ogg")
-    FAIL = mixer.Sound("assets/fail.ogg")
-    # CHEER = mixer.Sound("assets/Cheer.wav")
-    # CRYING = mixer.Sound("assets/crying")
+        mixer.init()
+        self.FLIP = mixer.Sound("assets/flip.ogg")
+        self.FLIPBACK = mixer.Sound("assets/flipback.ogg")
+        self.BELL_ONE = mixer.Sound("assets/bell1.ogg")
+        self.BELL_TWO = mixer.Sound("assets/bell2.ogg")
+        self.SHUFFLE = mixer.Sound("assets/shuffle.ogg")
+        self.NEXTLEVEL = mixer.Sound("assets/untitled.ogg")
+        self.FAIL = mixer.Sound("assets/fail.ogg")
+        # CHEER = mixer.Sound("assets/Cheer.wav")
+        # CRYING = mixer.Sound("assets/crying")
 
     def play_back_ground_music(self):
         '''
@@ -25,7 +25,9 @@ class sound:
         Functionality: Plays the background music using mixer
         Returns: Void
         '''
-        self.BACKGROUND_MUSIC.play()
+        mixer.music.load("assets/background.ogg")
+        mixer.music.set_volume(0.2)
+        mixer.music.play(-1)
 
     def play_bell_when_first_card_clicked(self):
         self.FLIP.play()
