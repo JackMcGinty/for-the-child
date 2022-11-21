@@ -61,9 +61,11 @@ class Board:
                         if event.type == pygame.QUIT:
                             run = False
                         if event.type == pygame.MOUSEBUTTONDOWN:
+                            screen.fill((0,0,0))
                             play_game()
 
             def play_game():
+                pygame.display.update()
                 fx = sound()
                 fx.shuffle()
                 fx.play_back_ground_music()
