@@ -63,6 +63,7 @@ class Board:
             clicked_cntr = 0
             timer = 0
             timer_on = False
+            combo = 0
 
             #screen = pygame.display.set_mode()
             run = True
@@ -113,8 +114,9 @@ class Board:
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
                                                     self.health.add_health(1)
+                                                    combo += 1
                                                     clicked_cntr = 0
-                                                    self.score.add_score(level)
+                                                    self.score.add_score(combo)
                                                 elif card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 1
@@ -125,7 +127,7 @@ class Board:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
                                                     self.health.lose_a_life()
-
+                                                    combo = 0
                                                     timer_on = True
 
                                             else:
@@ -155,7 +157,7 @@ class Board:
                                     
                                     if len(cards_revealed) == card_amount:
                                         timer_on = True
-
+                            print(combo)
                 screen.fill((0,0,0))
                 # Draw cards
                 for card in list_of_cards:
