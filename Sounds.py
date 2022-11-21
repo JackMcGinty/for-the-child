@@ -8,7 +8,6 @@ from pygame import mixer
 class sound:
 
     mixer.init()
-    BACKGROUND_MUSIC = mixer.music.load("assets/background.ogg")
     FLIP = mixer.Sound("assets/flip.ogg")
     FLIPBACK = mixer.Sound("assets/flipback.ogg")
     BELL_ONE = mixer.Sound("assets/bell1.ogg")
@@ -25,7 +24,9 @@ class sound:
         Functionality: Plays the background music using mixer
         Returns: Void
         '''
-        self.BACKGROUND_MUSIC.play()
+        mixer.music.load("assets/background.ogg")
+        mixer.music.set_volume(0.2)
+        self.BACKGROUND_MUSIC.play(-1)
 
     def play_bell_when_first_card_clicked(self):
         self.FLIP.play()
