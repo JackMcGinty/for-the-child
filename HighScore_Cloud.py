@@ -23,8 +23,14 @@ class DatabaseConnection:
         return db
     
     def push_highscore(self, score: int):
+        """ put the score into the database """
         data = {"score": score}
         self.db.collection("high-score").document("5Iga6ibZEzRhZ2LUXVk8").set(data)
 
-test_db = DatabaseConnection()
-test_db.push_highscore(99)
+    def pull_highscore(self) -> int:
+        """ get the high score from the database """
+        result = self.db.collection("high-score").document("5Iga6ibZEzRhZ2LUXVk8").get()
+        if result.exists:
+            return result.to_dict()["score"]
+        else:
+            return 0

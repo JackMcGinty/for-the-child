@@ -168,6 +168,7 @@ class Board:
                                             #     while choice not in choices:
                                             #         self.display_text("Would you like to play again? ")
                                             
+                                            # TODO: User continues to the next level after losing.
                                             return
                                         
                                         if len(cards_revealed) == card_amount:
