@@ -10,9 +10,9 @@ class Score:
         # Bryan Edit: cloud database
         self.connection = HighScore_Cloud.DatabaseConnection()
     
-    def add_score(self, number):
+    def add_score(self, level, combo = 0):
         """Adds points to total score"""
-        self.score += 2 ** number
+        self.score += 2 * level + (combo * level)
 
     def get_score(self):
         """Returns the current score"""
