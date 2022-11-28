@@ -7,6 +7,7 @@ class Score:
         self.score = 0
 
         self.high_score = self.get_high_score()
+        self.high_score_world = self.connection.pull_highscore()
         # Bryan Edit: cloud database
         self.connection = HighScore_Cloud.DatabaseConnection()
     
