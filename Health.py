@@ -20,3 +20,7 @@ class Health:
         '''Gives True value if there is no more health remaining and player is dead.'''
         if self.health <= 0:
             return True
+        
+    def reset_health(self):
+        '''Resets health if player runs out'''
+        self.health = 5
