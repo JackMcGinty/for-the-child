@@ -5,6 +5,7 @@ class Score:
     def __init__(self):
         """Initializes the score variables"""
         self.score = 0
+
         self.high_score = self.get_high_score()
         # Bryan Edit: cloud database
         self.connection = HighScore_Cloud.DatabaseConnection()
@@ -23,11 +24,16 @@ class Score:
             with open(file, "w") as file:
                 high = { "high_score": self.score }
                 json.dump(high, file)
+
         # Bryan Edit: pushes high score to cloud database
         if self.score > self.connection.pull_highscore():
             self.connection.push_highscore(self.score)
+                
+    def get_high_score(self):
+        """Returns the high score set at the beginning"""
+        return self.high_score
 
-    def get_high_score(self, file="high_score.json"):
+    def get_high_score_file(self, file = "high_score.json"):
         """Returns the current high_score in the json file"""
         try:
             with open(file, 'r') as file:
