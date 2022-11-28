@@ -7,7 +7,7 @@ def main():
     # Test()
 
     The_Board = Board()
-    The_Board.DisplayBoard()
+    The_Board.show_main_menu()
     pygame.quit()
 
 if __name__ == "__main__":

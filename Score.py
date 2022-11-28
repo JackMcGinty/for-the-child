@@ -1,15 +1,11 @@
 import json
-import HighScore_Cloud
+
 class Score:
     """Holds the current score and high score"""
     def __init__(self):
         """Initializes the score variables"""
         self.score = 0
-
-        self.high_score = self.get_high_score()
-        self.high_score_world = self.connection.pull_highscore()
-        # Bryan Edit: cloud database
-        self.connection = HighScore_Cloud.DatabaseConnection()
+        self.high_score = self.get_high_score_file()
     
     def add_score(self, level, combo = 0):
         """Adds points to total score"""
@@ -25,10 +21,6 @@ class Score:
             with open(file, "w") as file:
                 high = { "high_score": self.score }
                 json.dump(high, file)
-
-        # Bryan Edit: pushes high score to cloud database
-        if self.score > self.connection.pull_highscore():
-            self.connection.push_highscore(self.score)
                 
     def get_high_score(self):
         """Returns the high score set at the beginning"""
