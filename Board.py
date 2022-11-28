@@ -53,6 +53,7 @@ class Board:
                     run = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.screen.fill((0,0,0))
+                    
                     self.DisplayBoard()
 
     """ Bryan has messed around a bit in here """
@@ -113,6 +114,7 @@ class Board:
                     for event in pygame.event.get():
 
                         if event.type == pygame.QUIT:
+                            self.screen.fill((0,0,0))
                             return
 
                         if event.type == pygame.MOUSEBUTTONDOWN:
