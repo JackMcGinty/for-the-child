@@ -5,11 +5,11 @@ class Score:
     def __init__(self):
         """Initializes the score variables"""
         self.score = 0
-        self.high_score = self.get_high_score()
+        self.high_score = self.get_high_score_file()
     
-    def add_score(self, number):
+    def add_score(self, level, combo = 0):
         """Adds points to total score"""
-        self.score += 2 ** number
+        self.score += 2 * level + (combo * level)
 
     def get_score(self):
         """Returns the current score"""
@@ -21,8 +21,12 @@ class Score:
             with open(file, "w") as file:
                 high = { "high_score": self.score }
                 json.dump(high, file)
+                
+    def get_high_score(self):
+        """Returns the high score set at the beginning"""
+        return self.high_score
 
-    def get_high_score(self, file="high_score.json"):
+    def get_high_score_file(self, file = "high_score.json"):
         """Returns the current high_score in the json file"""
         try:
             with open(file, 'r') as file:

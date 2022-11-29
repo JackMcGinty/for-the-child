@@ -4,12 +4,6 @@ import math
 if not pygame.get_init():
     pygame.init()
 
-
-# TODO 
-#   Write card positioning code (use Board.py code as base)
-
-
-
 """
 Bryan
 """
