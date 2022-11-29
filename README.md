@@ -15,7 +15,6 @@ This software was written in Python with the libraries of pygame, time, json, ra
 
 ## Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Web Site Name](http://url.link.goes.here)
 * [Web Site Name](http://url.link.goes.here)
 
@@ -81,7 +80,7 @@ Documentation Manager | Jessica Payne
 <!--- Graphic Designer |	Gergo M  Commented out until he does something on the prodject-->
 
 ## Assignments 
-To manage our assignments, progress, and To-do's, we used a website called Trello. Below is a link to our Trell Board
+To manage our assignments, progress, and To-do's, we used a website called Trello. Below is a link to our Trello Board
  
 [Trello Board: *Memorize Your Colors*](https://trello.com/b/Lzs0ir4K/memorize-your-colors) 
 
@@ -98,5 +97,3 @@ Level counter, add more cards | X
 High score marker when it ends | 
 Background behind the cards, (use Unsplash for background?) |
  |
-
-
