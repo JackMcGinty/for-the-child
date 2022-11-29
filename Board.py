@@ -53,7 +53,9 @@ class Board:
                     run = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.screen.fill((0,0,0))
-                    
+                    self.level.reset_level()
+                    self.health.reset_health()
+                    self.score.reset_score()
                     self.DisplayBoard()
 
     """ Bryan has messed around a bit in here """
