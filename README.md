@@ -58,9 +58,15 @@ This software was written in Python with the libraries of pygame, time, json, ra
 
 ## Sprint 1
 ## Sprint 2
+![sprint two progress picture](pictures/sprint2.png)
+![sprint two(2) progress picture](pictures/sprint2.1.png)
 ## Sprint 3
+![sprint three progress picture](pictures/sprint3.png)
+![sprint three(2) progress picture](pictures/sprint3.1.png)
 ## Sprint 4
+![sprint four progress picture](pictures/sprint4.png)
 ## Sprint 5
+![sprint five progress picture](pictures/sprint5.png)
 
 # Roles and Assignments
 
