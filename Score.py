@@ -26,6 +26,9 @@ class Score:
         """Returns the high score set at the beginning"""
         return self.high_score
 
+    def reset_score(self):
+        self.score = 0
+
     def get_high_score_file(self, file = "high_score.json"):
         """Returns the current high_score in the json file"""
         try:

@@ -25,6 +25,10 @@ class Level:
         """adds a level"""
         self.current_level += 1
 
+    def reset_level(self):
+        """adds a level"""
+        self.current_level = 0
+
     def get_next_level(self) -> int:
         """
         Inputs: None
