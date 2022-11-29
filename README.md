@@ -90,11 +90,11 @@ Your Project Requirements | Completed
 ------------------------- | ---------
 Matching Colors along with a user interface | X
 Random aspect to mix up the cards for each new game | X
-Simple art design for cards | 
+Simple art design for cards |  Design Plan Changed
 Win game condition, a way to lose (maybe a health system) | X
 Goal that we need to achieve, brainstorm, very achievable | X
 Sound Design, and Music | X
 Level counter, add more cards | X
-High score marker when it ends | 
-Background behind the cards, (use Unsplash for background?) |
+High score marker when it ends | In Progress
+Background behind the cards, (use Unsplash for background?) | Design Plan Changed
  |
