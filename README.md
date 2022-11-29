@@ -56,6 +56,7 @@ This software was written in Python with the libraries of pygame, time, json, ra
 # Progress Pictures By Sprint
 
 ## Sprint 1
+No picture available since it was mostly brainstorming and confrencing with one another.
 ## Sprint 2
 ![sprint two progress picture](pictures/sprint2.png)
 ![sprint two(2) progress picture](pictures/sprint2.1.png)
