@@ -4,7 +4,7 @@
 
 *Memorize Your Colors* was written for an educational purpose to serve pre-college students in grades k-12. It is a color matching game to stimulate the thinking and memory of the youth as well as teach colors and comparison. *Memorize Your Colors* is copy-righted and any use of the code without permission from the owners/developers is prohibitted. 
 
-*Memorize Your Colors* is a classic style matching game but with a twist. There is a combo score for each match you get in a row. There is a wildcard on each level that has an odd amount of cards. The wildcard is a match within itself. You are given health and each wrong match will subtract one from the health count. There is also a high score tracker that is kept track of through a cloud database. The colors are randomly generated through a RGB generator so some colors may be close together so pay attention. 
+*Memorize Your Colors* is a classic style matching game but with a twist. There is a combo score for each match you get in a row. There is a wildcard on each level that has an odd amount of cards. The wildcard is a match within itself which also adds to your health. You are given health and each wrong match will subtract one from the health count. There is also a high score tracker that is kept track of through a cloud database. The colors are randomly generated through a RGB generator so some colors may be close together so pay attention. 
 
 ## Demonstration Video of Project
 [Software Demo Video: *Memorize Your Colors*](http://youtube.link.goes.here)
@@ -90,11 +90,11 @@ Your Project Requirements | Completed
 ------------------------- | ---------
 Matching Colors along with a user interface | X
 Random aspect to mix up the cards for each new game | X
-Simple art design for cards | 
+Simple art design for cards |  Design Plan Changed
 Win game condition, a way to lose (maybe a health system) | X
 Goal that we need to achieve, brainstorm, very achievable | X
 Sound Design, and Music | X
 Level counter, add more cards | X
-High score marker when it ends | 
-Background behind the cards, (use Unsplash for background?) |
+High score marker when it ends | In Progress
+Background behind the cards, (use Unsplash for background?) | Design Plan Changed
  |
