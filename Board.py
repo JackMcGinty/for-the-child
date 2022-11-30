@@ -26,6 +26,7 @@ class Board:
         self.round_txt = ""
         self.game_over = font.render("You Lose!", True, (255,0,0))
         self.screen = pygame.display.set_mode([WIDTH, HEIGHT])
+        self.pause_timer = 0
 
     def start_timer(self, timer):
         timer += 1
@@ -87,15 +88,35 @@ class Board:
             start = True
             level = self.level.get_level()
             while run:
+                
                 self.update_stats()
                 if start:
                     for card in list_of_cards:
                         pygame.draw.rect(self.screen, card.color, card.rect, 0, 15)
                         pygame.display.update()
-                    time.sleep(level)
+                    # time.sleep(level) # this needs to change
+                    if self.pause_timer == 0:
+                        self.pause_timer = 1
                     fx.next_level()
                 clock.tick(60)
                 start = False
+
+                print(self.level.get_level()*60)
+                # handle the timer
+                if self.pause_timer > 0:
+                    start = True
+                    self.pause_timer += 1
+                    # check for events so we can potentially exit
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            self.screen.fill((0,0,0))
+                            return
+                    # check for the timer exit condition
+                    if self.pause_timer > self.level.get_level() * 60:
+                        self.pause_timer = 0
+                        start = False
+                    else:
+                        continue
 
                 # score = self.font.render(str(self.score.get_score()), True, (255,255,255))
                 # health_num = self.font.render(str(self.health.get_health()), True, (255,255,255))
