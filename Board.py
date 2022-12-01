@@ -62,9 +62,10 @@ class Board:
     """ Bryan has messed around a bit in here """
     def DisplayBoard(self):
         print(self.score.high_score)
+        clock = pygame.time.Clock()
+
         while not self.health.no_health():
             pygame.display.set_caption("Memorize You Colors!")
-            clock = pygame.time.Clock()
 
 
 
@@ -88,34 +89,44 @@ class Board:
             start = True
             level = self.level.get_level()
             while run:
+                clock.tick(60)
                 
                 self.update_stats()
-                if start:
-                    for card in list_of_cards:
-                        pygame.draw.rect(self.screen, card.color, card.rect, 0, 15)
-                        pygame.display.update()
-                    # time.sleep(level) # this needs to change
-                    if self.pause_timer == 0:
-                        self.pause_timer = 1
-                    fx.next_level()
-                clock.tick(60)
-                start = False
 
-                # handle the timer
-                if self.pause_timer > 0:
-                    start = True
-                    self.pause_timer += 1
-                    # check for events so we can potentially exit
-                    for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            self.screen.fill((0,0,0))
-                            return
-                    # check for the timer exit condition
-                    if self.pause_timer > self.level.get_level() * 10:
-                        self.pause_timer = 0
-                        start = False
-                    else:
-                        continue
+                if start:
+                    end_timer = self.level.get_level() * 240
+                    while (timer < end_timer):
+                        for card in list_of_cards:
+                            pygame.draw.rect(self.screen, card.color, card.rect, 0, 15)
+                        pygame.display.flip()
+                        timer += 1
+                start = False
+                
+                # if start:
+                #     for card in list_of_cards:
+                #         pygame.draw.rect(self.screen, card.color, card.rect, 0, 15)
+                #         pygame.display.update()
+                #     # time.sleep(level) # this needs to change
+                #     if self.pause_timer == 0:
+                #         self.pause_timer = 1
+                #     fx.next_level()
+                # start = False
+
+                # # handle the timer
+                # if self.pause_timer > 0:
+                #     start = True
+                #     self.pause_timer += 1
+                #     # check for events so we can potentially exit
+                #     for event in pygame.event.get():
+                #         if event.type == pygame.QUIT:
+                #             self.screen.fill((0,0,0))
+                #             return
+                #     # check for the timer exit condition
+                #     if self.pause_timer > self.level.get_level() * 10:
+                #         self.pause_timer = 0
+                #         start = False
+                #     else:
+                #         continue
 
                 # score = self.font.render(str(self.score.get_score()), True, (255,255,255))
                 # health_num = self.font.render(str(self.health.get_health()), True, (255,255,255))
