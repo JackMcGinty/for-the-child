@@ -16,8 +16,8 @@ class sound:
         self.SHUFFLE = mixer.Sound("assets/shuffle.ogg")
         self.NEXTLEVEL = mixer.Sound("assets/untitled.ogg")
         self.FAIL = mixer.Sound("assets/fail.ogg")
-        # CHEER = mixer.Sound("assets/Cheer.wav")
-        # CRYING = mixer.Sound("assets/crying")
+        self.CHEER = mixer.Sound("assets/Cheer.ogg")
+        self.CRYING = mixer.Sound("assets/crying.ogg")
 
     def play_back_ground_music(self):
         '''
@@ -70,3 +70,15 @@ class sound:
         This plays the SHUFFLE sound when the cards are being shuffled 
         '''
         self.SHUFFLE.play()
+
+    def play_crying(self):
+        '''
+        This will play a crying noise
+        '''
+        self.CRYING.play()
+
+    def play_cheer(self):
+        '''
+        This will play a cheering noise
+        '''
+        self.CHEER.play()
