@@ -133,7 +133,10 @@ class Board:
                                                     cards_revealed.append(first_card)
                                                     cards_revealed.append(card)
                                                     self.health.add_health(1)
-                                                    combo += 1
+                                                    if combo >= 0:
+                                                        combo += 1
+                                                    else:
+                                                        combo = 0
                                                     clicked_cntr = 0
                                                     self.score.add_score(combo)
                                                 elif card.color == (0,0,0):
@@ -147,8 +150,12 @@ class Board:
                                                     cards_mismatched.append(first_card)
                                                     cards_mismatched.append(card)
                                                     self.health.lose_a_life()
-                                                    combo = 0
+                                                    if combo <= 0:
+                                                        combo -= 1
+                                                    else:
+                                                        combo = 0
                                                     timer_on = True
+                                                    self.score.add_score(combo)
 
                                             else:
                                                 if card.color == (0,0,0):
