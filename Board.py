@@ -101,36 +101,6 @@ class Board:
                         pygame.display.flip()
                         timer += 1
                 start = False
-                
-                # if start:
-                #     for card in list_of_cards:
-                #         pygame.draw.rect(self.screen, card.color, card.rect, 0, 15)
-                #         pygame.display.update()
-                #     # time.sleep(level) # this needs to change
-                #     if self.pause_timer == 0:
-                #         self.pause_timer = 1
-                #     fx.next_level()
-                # start = False
-
-                # # handle the timer
-                # if self.pause_timer > 0:
-                #     start = True
-                #     self.pause_timer += 1
-                #     # check for events so we can potentially exit
-                #     for event in pygame.event.get():
-                #         if event.type == pygame.QUIT:
-                #             self.screen.fill((0,0,0))
-                #             return
-                #     # check for the timer exit condition
-                #     if self.pause_timer > self.level.get_level() * 10:
-                #         self.pause_timer = 0
-                #         start = False
-                #     else:
-                #         continue
-
-                # score = self.font.render(str(self.score.get_score()), True, (255,255,255))
-                # health_num = self.font.render(str(self.health.get_health()), True, (255,255,255))
-                # round_num = self.font.render(str(level), True, (255,255,255))
 
                 if timer_on == True:
                     if timer < 60:
@@ -169,6 +139,7 @@ class Board:
                                                 elif card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 1
+                                                    start = True
                                                     fx.play_wildcard()
 
                                                 else:
@@ -183,6 +154,7 @@ class Board:
                                                 if card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 0
+                                                    start = True
                                                     fx.play_wildcard()
                                                 else:
                                                     fx.play_bell_when_first_card_clicked()                                                    
@@ -195,14 +167,6 @@ class Board:
                                         self.score.update_high_score()
                                         pygame.display.update()
                                         time.sleep(3)
-                                        
-                                        # while True:
-                                        #     choices = {"Y", "N"}
-                                        #     choice = ""
-                                        #     while choice not in choices:
-                                        #         self.display_text("Would you like to play again? ")
-                                        
-                                        # TODO: User continues to the next level after losing.
                                         return
                                     
                                     if len(cards_revealed) == card_amount:
