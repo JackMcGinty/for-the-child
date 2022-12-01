@@ -50,7 +50,12 @@ This software was written in Python with the libraries of pygame, time, json, ra
 * Score Combo created and implimented
 * High score implimented
 * README updated
-* Still in progress.....
+* Commented Code
+* Negative Score combo added
+* More sounds added
+* Fixed timer on board class
+* Debugging
+* QA testing
 # Progress Pictures By Sprint
 
 ## Sprint 1
