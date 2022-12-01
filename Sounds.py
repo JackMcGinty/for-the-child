@@ -30,28 +30,43 @@ class sound:
         mixer.music.play(-1)
 
     def play_bell_when_first_card_clicked(self):
+        '''
+        This function plays the sound of cards shuffling 
+        '''
         self.FLIP.play()
     
     def play_wildcard(self):
+        '''
+        This plays the sound of the first bell
+        '''
         self.BELL_ONE.play()
 
     def next_level(self):
+        '''
+        This plays a sound when the next level happens
+        '''
         self.NEXTLEVEL.play()
 
     def play_fail(self):
+        '''
+        This plays the sound of FAIL when the user makes a mistake
+        '''
         self.FAIL.play()
 
     def play_flip_back(self):
+        '''
+        This plays the sound FLIPBACK when the cards flip 
+        '''
         self.FLIPBACK.play()
 
     def play_bell_when_second_card_clicked(self):
+        '''
+        This plays the second bell
+        '''
         self.BELL_TWO.play()
 
     def shuffle(self):
+        '''
+        This plays the SHUFFLE sound when the cards are being shuffled 
+        '''
         self.SHUFFLE.play()
-
-    def play_cheering(self):
-        self.CHEER.play()
-
-    def play_crying(self):
-        self.CRYING.play()

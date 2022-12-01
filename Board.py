@@ -167,14 +167,6 @@ class Board:
                                         self.score.update_high_score()
                                         pygame.display.update()
                                         time.sleep(3)
-                                        
-                                        # while True:
-                                        #     choices = {"Y", "N"}
-                                        #     choice = ""
-                                        #     while choice not in choices:
-                                        #         self.display_text("Would you like to play again? ")
-                                        
-                                        # TODO: User continues to the next level after losing.
                                         return
                                     
                                     if len(cards_revealed) == card_amount:
