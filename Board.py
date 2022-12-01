@@ -101,7 +101,6 @@ class Board:
                 clock.tick(60)
                 start = False
 
-                print(self.level.get_level()*60)
                 # handle the timer
                 if self.pause_timer > 0:
                     start = True
@@ -112,7 +111,7 @@ class Board:
                             self.screen.fill((0,0,0))
                             return
                     # check for the timer exit condition
-                    if self.pause_timer > self.level.get_level() * 60:
+                    if self.pause_timer > self.level.get_level() * 10:
                         self.pause_timer = 0
                         start = False
                     else:
