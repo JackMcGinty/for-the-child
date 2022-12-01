@@ -6,17 +6,9 @@
 
 *Memorize Your Colors* is a classic style matching game but with a twist. There is a combo score for each match you get in a row. There is a wildcard on each level that has an odd amount of cards. The wildcard is a match within itself which also adds to your health. You are given health and each wrong match will subtract one from the health count. There is also a high score tracker that is kept track of through a cloud database. The colors are randomly generated through a RGB generator so some colors may be close together so pay attention. 
 
-## Demonstration Video of Project
-[Software Demo Video: *Memorize Your Colors*](http://youtube.link.goes.here)
-
 ## Development Environment
 
 This software was written in Python with the libraries of pygame, time, json, random, and math. It was written over a course of 5 two-week sprints. The version control system used was Git, Github, and Github Desktop. There are 5 developers who helped in the creation of this project: Brennon Laney, Andrew Leland, Bradley Payne, Bryan Loertscher, and Jessica Payne.
-
-## Useful Websites
-
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
 
 # Progress By Sprint 
 ## Sprint 1
