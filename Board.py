@@ -46,7 +46,9 @@ class Board:
         run = True
         while run:
             title_label = title_font.render("Press the mouse to begin...", 1, (255,255,255))
+            high_score_display = title_font.render(f"High Score: {self.score.get_high_score()}", False, (0, 0xFF, 0))
             self.screen.blit(title_label, (WIDTH/2 - title_label.get_width()/2, 350))
+            self.screen.blit(high_score_display, (30, HEIGHT-high_score_display.get_height()))
 
             pygame.display.update()
             for event in pygame.event.get():
