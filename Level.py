@@ -23,7 +23,8 @@ class Level:
 
     def add_level(self):
         """adds a level"""
-        self.current_level += 1
+        if not(self.current_level == 8):
+            self.current_level += 1
 
     def reset_level(self):
         """adds a level"""
