@@ -10,6 +10,12 @@
 
 This software was written in Python with the libraries of pygame, time, json, random, and math. It was written over a course of 5 two-week sprints. The version control system used was Git, Github, and Github Desktop. There are 5 developers who helped in the creation of this project: Brennon Laney, Andrew Leland, Bradley Payne, Bryan Loertscher, and Jessica Payne.
 
+## Useful Websites
+
+* [PyGame Documentation](https://www.pygame.org/docs/)
+* [Free Sounds](https://freesound.org/)
+* [Online Convert](https://online-convert.com/)
+
 # Progress By Sprint 
 ## Sprint 1
 * Project idea creation
