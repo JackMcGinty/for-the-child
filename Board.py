@@ -15,6 +15,7 @@ if not pygame.get_init():
 WIDTH = 1000
 HEIGHT = 700
 font = pygame.font.SysFont('Arial', 40)
+fx = sound()
 
 class Board:
     def __init__(self):
@@ -27,6 +28,8 @@ class Board:
         self.game_over = font.render("You Lose!", True, (255,0,0))
         self.screen = pygame.display.set_mode([WIDTH, HEIGHT])
         self.pause_timer = 0
+
+        self.background = pygame.image.load('bg5.jpg')
 
     def start_timer(self, timer):
         timer += 1
@@ -44,7 +47,9 @@ class Board:
     def show_main_menu(self):
         title_font = pygame.font.SysFont("comicsans", 50)
         run = True
+        fx.play_back_ground_music()
         while run:
+            self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
             title_label = title_font.render("Press the mouse to begin...", 1, (255,255,255))
             high_score_display = title_font.render(f"High Score: {self.score.get_high_score()}", False, (0, 0xFF, 0))
             self.screen.blit(title_label, (WIDTH/2 - title_label.get_width()/2, 350))
@@ -55,7 +60,7 @@ class Board:
                 if event.type == pygame.QUIT:
                     run = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.screen.fill((0,0,0))
+                    self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
                     self.level.reset_level()
                     self.health.reset_health()
                     self.score.reset_score()
@@ -72,9 +77,8 @@ class Board:
 
 
             pygame.display.update()
-            fx = sound()
+
             fx.shuffle()
-            fx.play_back_ground_music()
             card_amount = self.level.get_next_level()
             list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
 
@@ -119,7 +123,7 @@ class Board:
                     for event in pygame.event.get():
 
                         if event.type == pygame.QUIT:
-                            self.screen.fill((0,0,0))
+                            self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
                             return
 
                         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -174,7 +178,7 @@ class Board:
                                     if self.health.no_health():
                                         fx.play_fail()
                                         print("You lose")
-                                        self.screen.fill((0,0,0))
+                                        self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
                                         self.screen.blit(self.game_over, (WIDTH/2 - 75, HEIGHT/2 - 50, 200, 200))
                                         self.score.update_high_score()
                                         pygame.display.update()
@@ -184,7 +188,7 @@ class Board:
                                     if len(cards_revealed) == card_amount:
                                         timer_on = True
                             print(combo)
-                self.screen.fill((0,0,0))
+                self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
                 # Draw cards
                 for card in list_of_cards:
                     if card == first_card or card in cards_revealed or card in cards_mismatched:
@@ -208,7 +212,7 @@ class Board:
                     cards_revealed.clear()
                     card_amount = self.level.get_next_level()
                     clr_rect = pygame.draw.rect(self.screen, (255,255,255), (0, 0, 1000, 625), 0, 0)
-                    self.screen.fill((0,0,0), clr_rect)
+                    self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
                     list_of_cards = generate_deck(card_amount, (WIDTH, HEIGHT))
                     level = self.level.get_level()
             

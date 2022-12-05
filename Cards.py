@@ -74,8 +74,8 @@ def position_deck(deck: list[Card], screensize: tuple[2]) -> list[Card]:
     ideal_rows = 0
     ideal_cols = round(len(deck) ** (1/2))
     ideal_rows = ideal_cols
-    x_padding = 10
-    y_padding = 10
+    x_padding = 50
+    y_padding = 50
     card_width = (screensize[0] - (x_padding*(ideal_rows+1))) / ideal_rows
     card_height = (working_screen_height - (x_padding*(ideal_cols+1))) / ideal_cols
     i_x = 0
