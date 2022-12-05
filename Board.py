@@ -142,6 +142,7 @@ class Board:
                                                     if combo >= 0:
                                                         combo += 1
                                                     else:
+                                                        fx.play_random_positive_sound()
                                                         combo = 0
                                                     clicked_cntr = 0
                                                     self.score.add_score(level=self.level.get_level() ,combo=combo)
@@ -162,6 +163,7 @@ class Board:
                                                     if combo <= 0:
                                                         combo -= 1
                                                     else:
+                                                        fx.play_random_negative_sound()
                                                         combo = 0
                                                     timer_on = True
                                                     self.score.add_score(self.level.get_level(), combo)
