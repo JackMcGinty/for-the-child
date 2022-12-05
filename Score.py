@@ -9,7 +9,6 @@ class Score:
     
     def add_score(self, level, combo = 0):
         """Adds points to total score"""
-        print(f"add_score() is receiving combo = {combo}")
         if combo < 0:
             self.score += combo
         else:
