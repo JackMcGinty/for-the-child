@@ -143,7 +143,7 @@ class Board:
                                                     self.score.add_score(level=self.level.get_level() ,combo=combo)
                                                     # Play combo sound effect
                                                     if (not combo%3) and (combo > 0): # i.e. == 0
-                                                        fx.play_random_sound()
+                                                        fx.play_random_positive_sound()
                                                 elif card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 1
@@ -161,6 +161,9 @@ class Board:
                                                         combo = 0
                                                     timer_on = True
                                                     self.score.add_score(self.level.get_level(), combo)
+                                                    # play a negative combo sound effect
+                                                    if (not combo%3) and (combo < 0):
+                                                        fx.play_random_negative_sound()
 
                                             else:
                                                 if card.color == (0,0,0):
