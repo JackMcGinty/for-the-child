@@ -141,6 +141,9 @@ class Board:
                                                         combo = 0
                                                     clicked_cntr = 0
                                                     self.score.add_score(combo)
+                                                    # Play combo sound effect
+                                                    if (not combo%3) and (combo > 0): # i.e. == 0
+                                                        fx.play_random_sound()
                                                 elif card.color == (0,0,0):
                                                     cards_revealed.append(card)
                                                     clicked_cntr = 1
