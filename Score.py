@@ -21,6 +21,7 @@ class Score:
             with open(file, "w") as file:
                 high = { "high_score": self.score }
                 json.dump(high, file)
+        self.high_score = self.get_high_score_file()
                 
     def get_high_score(self):
         """Returns the high score set at the beginning"""
