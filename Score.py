@@ -9,7 +9,10 @@ class Score:
     
     def add_score(self, level, combo = 0):
         """Adds points to total score"""
-        self.score += 2 * level + (combo * level)
+        if combo < 0:
+            self.score += combo
+        else:
+            self.score += 2 * level + (combo * level)
 
     def get_score(self):
         """Returns the current score"""
