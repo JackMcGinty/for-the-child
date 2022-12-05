@@ -44,7 +44,7 @@ class sound:
         self.CONGRATULATIONS20 = mixer.Sound("assets/hurray20-converted.ogg")
 
         # This list is for the function ... that will randomly select a sound in this list
-        self.random_sounds = [
+        self.random_positive_sounds = [
             self.CONGRATULATIONS1,
             self.CONGRATULATIONS2,
             self.CONGRATULATIONS3,
@@ -67,6 +67,23 @@ class sound:
             self.CONGRATULATIONS20,
         ]
 
+        self.WRONG1 = mixer.Sound("assets/wrong-converted.ogg")
+        self.WRONG2 = mixer.Sound("assets/wrong2-converted.ogg")
+        self.WRONG3 = mixer.Sound("assets/wrong3-converted.ogg")
+        self.WRONG4 = mixer.Sound("assets/wrong4-converted.ogg")
+        self.WRONG5 = mixer.Sound("assets/wrong5-converted.ogg")
+        self.WRONG6 = mixer.Sound("assets/wrong6-converted.ogg")
+        self.WRONG7 = mixer.Sound("assets/wrong7-converted.ogg")
+
+        self.random_negative_sounds = [
+            self.WRONG1,
+            self.WRONG2,
+            self.WRONG3,
+            self.WRONG4, 
+            self.WRONG5,
+            self.WRONG6,
+            self.WRONG7
+        ]
 
     def play_back_ground_music(self):
         '''
@@ -132,9 +149,16 @@ class sound:
         '''
         self.CHEER.play()
 
-    def play_random_sound(self):
+    def play_random_positive_sound(self):
         '''
-        This will select a random sound from the random_sounds list and play it
+        This will select a random sound from the random_positive_sounds list and play it
         '''
-        new_sound = random.choice(self.random_sounds)
+        new_sound = random.choice(self.random_positive_sounds)
+        new_sound.play()
+    
+    def play_random_negative_sound(self):
+        '''
+        Select a random negative sound and play it.
+        '''
+        new_sound = random.choice(self.random_negative_sounds)
         new_sound.play()
