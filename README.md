@@ -100,4 +100,6 @@ Sound Design, and Music | X
 Level counter, add more cards | X
 High score marker when it ends | In Progress
 Background behind the cards, (use Unsplash for background?) | Design Plan Changed
- |
+ 
+### Disclaimer
+Many of the sound effects (specifically those beginning with "hurray" or "wrong") were taken from the files of an old computer game from the 90s called *Living Letters*. We do not claim any right or ownership of these sound effects, we merely appreciate their excellence.
