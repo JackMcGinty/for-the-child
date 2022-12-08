@@ -68,7 +68,6 @@ class Board:
 
     """ Bryan has messed around a bit in here """
     def DisplayBoard(self):
-        print(self.score.high_score)
         clock = pygame.time.Clock()
 
         while not self.health.no_health():
@@ -182,7 +181,6 @@ class Board:
                                                 first_card = card
                                     if self.health.no_health():
                                         fx.play_fail()
-                                        print("You lose")
                                         self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
                                         self.screen.blit(self.game_over, (WIDTH/2 - 75, HEIGHT/2 - 50, 200, 200))
                                         self.score.update_high_score()
@@ -192,7 +190,6 @@ class Board:
                                     
                                     if len(cards_revealed) == card_amount:
                                         timer_on = True
-                            print(combo)
                 self.screen.blit(self.background, (0,0), (0,0,WIDTH,HEIGHT))
                 # Draw cards
                 for card in list_of_cards:
