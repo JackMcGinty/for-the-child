@@ -19,25 +19,25 @@ class Test_Health:
     
     def test_default(self):
         """Tests default values of Health class"""
-        assert self.health.health == 1
+        assert self.health.health == 5
         print("\ttest_default\t\tPASSED")
 
     def test_get_health(self):
         """Tests get_health(): health == 1"""
-        assert self.health.get_health() == 1 == self.health.health
+        assert self.health.get_health() == 5 == self.health.health
         print("\ttest_get_health\t\tPASSED")
 
     def test_add_health(self):
         """Tests add_health(): health += amount"""
         self.health.add_health(1)
-        assert self.health.health == 2
+        assert self.health.health == 6
         # Reset health to default (1)
-        self.health.health = 1
+        self.health.health = 5
         print("\ttest_add_health\t\tPASSED")
         
     def test_lose_a_life(self):
-        """Tests subtract_health(): health == 0"""
-        assert self.health.lose_a_life() == 0 == self.health.health
+        """Tests subtract_health(): health == 4"""
+        assert self.health.lose_a_life() == 4 == self.health.health
         print("\ttest_subtract_health\tPASSED")
 
     def test_no_health(self):

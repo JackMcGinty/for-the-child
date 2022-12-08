@@ -9,11 +9,7 @@ class Test_Deck:
         
     def test(self):
         """Main Test Runner Function"""
-        
-    def test_card_is_match(self):
-        """tests the is match function"""
-        black = (0,0,0)
-        assert self.card.is_match(black, black)
+        self.test_generate_deck()
     
     def test_generate_deck(self):
         """tests the generate deck function"""

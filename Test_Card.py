@@ -5,7 +5,7 @@ class Test_Card:
     def __init__(self):
         print("------------------------------------------------------------")
         print("Card:")
-        self.card = Card()
+        self.card = Card((0,0,0))
         print("CARD INIT SETUP\t\tPASSED")
         self.test()
         
@@ -23,6 +23,5 @@ class Test_Card:
         
     def test_card_is_match(self):
         """tests the is match function"""
-        black = (0,0,0)
-        assert self.card.is_match(black, black)
+        assert self.card.is_match(Card((0,0,0)))
     
