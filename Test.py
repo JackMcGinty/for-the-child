@@ -25,5 +25,3 @@ class Test:
         print("\n+++++++++++++++++++++++++++")
         print("ALL TESTS\t\t\tPASSED")
         print("+++++++++++++++++++++++++++")
-        
-Test()

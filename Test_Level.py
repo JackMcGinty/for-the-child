@@ -13,22 +13,22 @@ class Test_Level:
         """Main Test Runner Function"""
         self.test_default()
         self.test_get_level()
-        self.test_next_level()
+        self.test_add_level()
     
     def test_default(self):
         """Tests default values of Level class"""
-        assert self.level.level == 0
+        assert self.level.current_level == 0
         print("\ttest_default\t\tPASSED")
 
     def test_get_level(self):
         """Tests get_level(): level == 0"""
-        assert self.level.get_level() == 0 == self.level.level
+        assert self.level.get_level() == 0 == self.level.current_level
         print("\ttest_get_level\t\tPASSED")
 
-    def test_next_level(self):
+    def test_add_level(self):
         """Tests next_level(): level += 1"""
-        self.level.next_level()
-        assert self.level.level == 1
+        self.level.add_level()
+        assert self.level.current_level == 1
         # Reset level to 0
         self.level.level = 0
         print("\ttest_next_level\t\tPASSED")
