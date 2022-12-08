@@ -5,10 +5,12 @@
 *Memorize Your Colors* was written for an educational purpose to serve pre-college students in grades k-12. It is a color matching game to stimulate the thinking and memory of the youth as well as teach colors and comparison. *Memorize Your Colors* is copy-righted and any use of the code without permission from the owners/developers is prohibitted. 
 
 *Memorize Your Colors* is a classic style matching game but with a twist. There is a combo score for each match you get in a row. There is a wildcard on each level that has an odd amount of cards. The wildcard is a match within itself which also adds to your health. You are given health and each wrong match will subtract one from the health count. There is also a high score tracker that is kept track of through a cloud database. The colors are randomly generated through a RGB generator so some colors may be close together so pay attention. 
+#
 
 ## Development Environment
 
 This software was written in Python with the libraries of pygame, time, json, random, and math. It was written over a course of 5 two-week sprints. The version control system used was Git, Github, and Github Desktop. There are 5 developers who helped in the creation of this project: Brennon Laney, Andrew Leland, Bradley Payne, Bryan Loertscher, and Jessica Payne.
+#
 
 ## Useful Websites
 
@@ -56,6 +58,10 @@ This software was written in Python with the libraries of pygame, time, json, ra
 * Fixed timer on board class
 * Debugging
 * QA testing
+* Added background design behind cards
+* Added more spacing between cards to see background
+* Fixed crash issue
+* High score display added
 # Progress Pictures By Sprint
 
 ## Sprint 1
@@ -70,6 +76,7 @@ No picture available since it was mostly brainstorming and confrencing with one 
 ![sprint four progress picture](pictures/sprint4.png)
 ## Sprint 5
 ![sprint five progress picture](pictures/sprint5.png)
+![sprint five progress picture](pictures/sprint5.1.png)
 
 # Roles and Assignments
 
@@ -84,10 +91,10 @@ Documentation Manager | Jessica Payne
 <!--- Graphic Designer |	Gergo M  Commented out until he does something on the prodject-->
 
 ## Assignments 
-To manage our assignments, progress, and To-do's, we used a website called Trello. Below is a link to our Trello Board
+To manage our assignments, progress, and To-do's, we used a website called Trello. Below is a link to our Trello Board:
  
-[Trello Board: *Memorize Your Colors*](https://trello.com/b/Lzs0ir4K/memorize-your-colors) 
-
+### [Trello Board: *Memorize Your Colors*](https://trello.com/b/Lzs0ir4K/memorize-your-colors) 
+#
 ## Planned Project Requirements
 Your Project Requirements | Completed
 ------------------------- | ---------
@@ -98,8 +105,12 @@ Win game condition, a way to lose (maybe a health system) | X
 Goal that we need to achieve, brainstorm, very achievable | X
 Sound Design, and Music | X
 Level counter, add more cards | X
-High score marker when it ends | In Progress
+High score marker when it ends | X
 Background behind the cards, (use Unsplash for background?) | Design Plan Changed
+|
+
+#
  
 ### Disclaimer
 Many of the sound effects (specifically those beginning with "hurray" or "wrong") were taken from the files of an old computer game from the 90s called *Living Letters*. We do not claim any right or ownership of these sound effects, we merely appreciate their excellence.
+#
